@@ -6,7 +6,7 @@ class ControladorCSV extends CI_Controller {
         parent::__construct();
         $this->load->helper('url');
         $this->load->library('session'); // Cargar la librería de sesión
-        $this->load->database(); // Asegúrate de cargar la base de datos
+        $this->load->database(); // cargar la base de datos
         $this->load->model('Usuario'); // Modelo usuarios
         $this->load->model('Ciudad_Usuario'); // Modelo ciudadesusuario
        $this->load->model('Ciudad'); // modelo Ciudad

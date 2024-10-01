@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>Prueba técnica Backend</title>
     <script>
-        //Actualizar nombre de ciudad
+        //Actualizar nombre de ciudad al seleccionar en el select esto para guardar en la bd
     function ActualizarNombreCiudad() {
         var select = document.getElementById('selectCiudad');
         var selectedOption = select.options[select.selectedIndex];
@@ -27,13 +27,14 @@
 
    <?php if (isset($ciudades)): ?>
     <form action="<?php echo site_url('ControladorCSV/save'); ?>" method="post">
+        <!--Select que muestra ciudades-->
         <select name="IdCiudad" id="selectCiudad" required onchange="ActualizarNombreCiudad()">
             <option value="">Seleccione una ciudad</option>
             <?php foreach ($ciudades as $ciudad): ?>
                 <option value="<?php echo $ciudad['Id']; ?>" data-nombre="<?php echo $ciudad['nombre']; ?>"><?php echo $ciudad['nombre']; ?></option>
             <?php endforeach; ?>
         </select>
-
+        <!--Select que muestra usuarios-->
         <select name="IdUsuario" required>
             <option value="">Seleccione un usuario</option>
             <?php foreach ($usuarios as $usuario): ?>
@@ -55,9 +56,10 @@
 <form method="post" action="<?php echo site_url('ControladorCSV/mostrarCiudadUsuario'); ?>">
     <button type="submit">Mostrar Datos</button>
 </form>
-
+<!--verificamos que se presiono mostrar datos y si es asi mostramos esto viendo si las variables $ciudadUsuarios esta instanciada-->
 <?php if (isset($ciudadUsuarios) && !empty($ciudadUsuarios)): ?>
 <table>
+    <!--Creamos tabla para mostrar de forma legible los datos-->
     <tr>
         <th>Id Usuario</th>
         <th>Nombre Usuario</th>
